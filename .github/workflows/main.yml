@@ -1,0 +1,43 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow only on pushes to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout code
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 22  # Replace with your desired Node.js version
+        cache: 'yarn'
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: yarn install
+
+    # Step 4: Build project
+    - name: Build Project
+      run: yarn build
+
+    # Step 5: Set up SSH
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    # Step 6: Copy dist folder to remote server
+    - name: Deploy to Server
+      run: |
+        scp -r ./dist git@remote-server:/path/to/target/directory
+      env:
+        SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
