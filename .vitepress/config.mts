@@ -4,9 +4,9 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "varet",
   description: "Varet CLI Homepage",
-  head: [["link", { rel: "icon", href: "/assets/varet.png" }]],
+  head: [["link", { rel: "icon", href: "varet.png" }]],
   themeConfig: {
-    logo: "/assets/varet.png",
+    logo: "varet.png",
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
@@ -32,4 +32,5 @@ export default defineConfig({
   sitemap: {
     hostname: "https://varet.dev",
   },
+  cleanUrls: true,
 });
