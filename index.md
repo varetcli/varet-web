@@ -3,9 +3,13 @@
 layout: home
 
 hero:
-  name: "Varet"
-  # text: "Varet CLI Homepage"
-  tagline: Kickstart Anything
+  name: "varet"
+  text: "Kickstart Anything"
+  image:
+    dark: "/assets/varet.png"
+    light: "/assets/varet.png"
+    alt: "varet cli screenshot"
+  tagline: CLI tool that runs boring jobs for you
   actions:
     - theme: brand
       text: Get started

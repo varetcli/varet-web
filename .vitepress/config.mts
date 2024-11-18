@@ -2,15 +2,16 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Varet CLI",
+  title: "varet",
   description: "Varet CLI Homepage",
+  head: [["link", { rel: "icon", href: "/assets/varet.png" }]],
   themeConfig: {
+    logo: "/assets/varet.png",
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
       { text: "Documentation", link: "/docs/varet" },
     ],
-
     sidebar: [
       {
         text: "Documentation",
@@ -27,5 +28,8 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/varetcli/varet" },
     ],
+  },
+  sitemap: {
+    hostname: "https://varet.dev",
   },
 });
